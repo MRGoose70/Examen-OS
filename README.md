@@ -11,6 +11,7 @@ une fois dans le répertoire, faire cette commande -> ansible-playbook -i hosts.
 
 # Docker
 Pour réaliser Docker, se rendre dans le répertoire Docker.
+Il vous faudra créer un répertoire "vol" qui va contenir le fichier index.html
 une fois dans ce répertoire, faire cette commande -> docker build -t examen -f Dockerfile .
-Puis cette commande -> docker run -v $(pwd)/vol:/app/root -p 0.0.0.0:8080:8080 examen
+Puis cette commande -> docker run -v $(pwd)/vol:/app/root -p 0.0.0.0:8080:8080 -d examen
 Pour tester il suffit de ce rendre sur cette page web -> http://<ip de votre machine>:8080/
