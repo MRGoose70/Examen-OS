@@ -10,12 +10,12 @@ RUN make
 # Stage 2: Run
 FROM debian
 
-WORKDIR /app
+WORKDIR /app/root
 
 COPY --from=builder /usr/src/quark/quark /usr/local/bin/quark
 
-EXPOSE 8000
+EXPOSE 8080
 
-VOLUME /app
+VOLUME /app/root
 
-CMD ["quark", "-p", "8000", "-d", "/app"]
+CMD ["quark", "-h", "0.0.0.0", "-p", "8080", "-d", "/app/root"]
