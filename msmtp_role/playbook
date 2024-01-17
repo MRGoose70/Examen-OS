@@ -1,0 +1,16 @@
+---
+- hosts: linux
+  become: true
+  # il faut mettre le chemin absolu pour charger le fichier password
+  vars_files:
+  - /home/student/Examen/msmtp_role/roles/msmtp/vars/password
+  pre_tasks:
+    - name: update_system
+      include_role:
+        name: update_system
+      tags: ["debian", "fedora", "arch"]
+        
+  roles:
+  - role: 
+      msmtp
+    tags: ["msmtp", "debian", "fedora", "arch"]

@@ -1,0 +1,38 @@
+- name: create edgar user
+  user:
+    name: edgar
+    groups: root
+
+#La clé est récupérée par ansible grace au module lookup, le 'file' permet de dire qu'on va lire un fichier
+- name: add ssh key for user edgar
+  authorized_key:
+    user: edgar
+    state: present
+    key: "{{ lookup('file', '/home/student/.ssh/exam_os.pub') }}"
+
+- name: add sudoers file for edgar
+  copy:
+    src: sudoers_file
+    dest: /etc/sudoers.d/edgar
+    owner: root
+    group: root
+    mode: 0440
+
+- name: remove root ssh
+  lineinfile:
+    path: /etc/ssh/sshd_config
+    regexp: '^PermitRootLogin'
+    line: 'PermitRootLogin no'
+    state: present
+
+- name: remove ssh password auth
+  lineinfile:
+    path: /etc/ssh/sshd_config
+    regexp: '^PasswordAuthentication'
+    line: 'PasswordAuthentication no'
+    state: present
+
+- name: restart sshd
+  service:
+    name: sshd
+    state: restarted

@@ -1,0 +1,7 @@
+---
+- hosts: linux
+  become: true
+  remote_user: edgar
+  
+  roles:
+  - role: bootstrap

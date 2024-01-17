@@ -3,7 +3,7 @@
 # Ansible
 ## Bootstrap
 Il faut copier la pair de clefs dans le répertoire .ssh de votre utilisateur
-Vous pouez faire eval $(ssh-agent) puis ssh-add de la clé privée. Le mot de passe est le même quue l'utilisateur de la machine.
+Vous pouez faire eval $(ssh-agent) puis ssh-add de la clé privée. Le mot de passe est le même que l'utilisateur de la machine.
 Ensuite vous devez copier la clef public sur les machines distantes -> ssh-copy-id -i /home/student/.ssh/exam_os.pub flairsou@10.1.72.124
 Les identifiants et l'ip doivent chnager changer en fonction de la machine.
 Pour faire le bootstrap de l'infra, se rendre dans bootstrap.
@@ -20,4 +20,4 @@ Pour réaliser Docker, se rendre dans le répertoire Docker.
 Il vous faudra créer un répertoire "vol" qui va contenir le fichier index.html
 une fois dans ce répertoire, faire cette commande -> docker build -t examen -f Dockerfile .
 Puis cette commande -> docker run -v $(pwd)/vol:/app/root -p 0.0.0.0:8080:8080 -d examen
-Pour tester il suffit de ce rendre sur cette page web -> http://<ip de votre machine>:8080/
+Pour tester il suffit de ce rendre sur cette page web -> http://"ip de votre machine":8080/
