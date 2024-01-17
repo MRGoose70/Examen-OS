@@ -8,15 +8,15 @@
   yum_repository:
     name: Docker
     description: Docker repository
-    baseurl: https://download.docker.com/linux/fedora/$releasever/$basearch/stable
+    baseurl: https://download.docker.com/linux/fedora/docker-ce.repo
     gpgcheck: yes
   when: ansible_facts['os_family'] == "RedHat"
 
-- name: Add Docker GPG key
-  rpm_key:
-    state: present
-    key: https://download.docker.com/linux/fedora/gpg
-  when: ansible_facts['os_family'] == "RedHat"
+# - name: Add Docker GPG key
+#   rpm_key:
+#     state: present
+#     key: https://download.docker.com/linux/fedora/gpg
+#   when: ansible_facts['os_family'] == "RedHat"
 
 - name: update_fedora
   dnf:
