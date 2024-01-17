@@ -4,6 +4,8 @@
 ## Bootstrap
 Il faut copier la pair de clefs dans le répertoire .ssh de votre utilisateur
 Vous pouez faire eval $(ssh-agent) puis ssh-add de la clé privée. Le mot de passe est le même quue l'utilisateur de la machine.
+Ensuite vous devez copier la clef public sur les machines distantes -> ssh-copy-id -i /home/student/.ssh/exam_os.pub flairsou@10.1.72.124
+Les identifiants et l'ip doivent chnager changer en fonction de la machine.
 Pour faire le bootstrap de l'infra, se rendre dans bootstrap.
 Une fois dans le répertoire,faire cette commande -> ansible-playbook -i hosts.yml bootstrap_playbook -K
 le mot de passe qui est demandé est celui de l'utilisateur de la machine.
@@ -11,6 +13,7 @@ le mot de passe qui est demandé est celui de l'utilisateur de la machine.
 ## Mails
 Pour configurer les mails, se rendre dans msmtp.
 une fois dans le répertoire, faire cette commande -> ansible-playbook -i hosts.yml playbook --ask-vault-pass
+Le mot de passe du vault est : Tigrou007
 
 # Docker
 Pour réaliser Docker, se rendre dans le répertoire Docker.
