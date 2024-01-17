@@ -1,0 +1,21 @@
+- name: Update package debian
+  apt:
+    update_cache: yes
+    upgrade: yes
+  tags: debian
+  when: ansible_facts['os_family'] == "Debian"
+
+- name: update_fedora
+  dnf:
+    update_cache: yes
+    name: '*'
+    state: latest
+  tags: fedora
+  when: ansible_facts['os_family'] == "RedHat"
+
+- name: Update package arch
+  pacman:
+    update_cache: yes
+    upgrade: yes
+  tags: arch
+  when: ansible_facts['os_family'] == "Archlinux"

@@ -15,6 +15,12 @@ Pour configurer les mails, se rendre dans msmtp.
 une fois dans le répertoire, faire cette commande -> ansible-playbook -i hosts.yml playbook --ask-vault-pass
 Le mot de passe du vault est : Tigrou007
 
+## Docker avec rôle
+Pour lancer l'installation de docker avec rôle, il faut se rendre dans le répertoire docker_role
+Une fois dans ce répertoire, il faut faire cette commande -> ansible-playbook -i hosts.yml --tags arch docker_playbook
+Attention que le "arch" va varier en fonction de la distribution, les possibilité sont arch ou debian ou fedora
+L'installation ne se lance que sur la machine qui possède le tag.
+
 # Docker
 Pour réaliser Docker, se rendre dans le répertoire Docker.
 Il vous faudra créer un répertoire "vol" qui va contenir le fichier index.html

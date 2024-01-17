@@ -1,0 +1,19 @@
+---
+- hosts: linux
+  become: true
+  pre_tasks:
+    
+    - name: update
+      include_role:
+        name: update_system
+      tags: ["debian", "fedora", "arch"]
+      
+  roles:
+    - role : docker_debian
+      tags: debian, docker
+    - role : docker_arch
+      tags: arch, docker
+    - role : docker_fedora
+      tags: fedora, docker
+
+ 
